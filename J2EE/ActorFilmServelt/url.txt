@@ -1,0 +1,174 @@
+********
+*Actors*
+********
+
+List all actors html: 
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=list_all_actors
+-----------------------------------------
+
+List all actors json:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=list_all_actors_json
+----------------------------------------
+
+Find by name actors html:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=list_actor_by_name&name=nameActor1
+------------------------------------------------
+
+Find by name actors json:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=list_actor_by_name_json&name=nameActor1
+--------------------------------------------------------
+
+Add actor:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=add_new_actor&name=newActor&yearBirth=2000
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=add_new_actor&name=newActor2&yearBirth=2002
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=add_new_actor&name=newActor3&yearBirth=2003
+--------------------------------------------------------------------------------------------------------
+
+Update Actor:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=modify_actor&name=newActor&yearBirth=1950
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=modify_actor&name=newActor2&yearBirth=1960
+-----------------------------------------------------------------------------------------------------
+
+Delete Actor:
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=delete_actor&name=newActor
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=delete_actor&name=newActor2
+
+http://localhost:8080/ActorFilmServelt/ActorServlet?action=delete_actor&name=newActor3
+
+
+*******
+*Films*
+*******
+
+List all films html:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=list_all_films
+
+
+List all films json
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=list_all_films_json
+
+
+Find by title film html:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=list_film_by_title&title=titulo1
+
+
+Find by title film json:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=list_film_by_title_json&title=titulo1
+
+
+Add film:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=add_new_film&title=Star%20Wars&director=Goerge%20Lucas&description=A%20science-fiction%20film&year=1980
+
+
+Update film:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=modify_film&title=Star%20Wars&director=Goerge%20Lucas&description=A%2020science-fiction%20film,%20Episode%20IV&year=1977
+
+
+Delete film:
+
+http://localhost:8080/ActorFilmServelt/FilmServlet?action=delete_film&title=Star%20Wars
+
+-------------------------------------------
+***************
+*RESTful Actor*
+***************
+
+Insert Actor:
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/insert_actor_query?name=pepe&yearBirth=1999
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/insert_actor_query?name=pepe
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/insert_actor_query?name=jose&yearBirth=1950
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/insert_actor_query?name=jose
+
+Find all Actors:
+
+http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/find_all_actors
+
+
+Find by name Actor:
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/find/pepe
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/find/pepe2
+
+Update Actor: before {"name":"pepe","yearBirth":1999}
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/update_actor?name=pepe&yearBirth=1900
+
+after --> {"name":"pepe","yearBirth":1900}
+
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/update_actor?name=pepe5&yearBirth=1900
+
+
+Delete actor
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/remove_actor?name=pepe
+
+go to this url and see the changes--> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/find_all_actors
+
+	- before -->[{"name":"pepe","yearBirth":1999},{"name":"jose","yearBirth":1950}]
+	- after --> [{"name":"jose","yearBirth":1950}]
+
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/actor-service/remove_actor?name=pepe5
+
+
+**************
+*RESTful Film*
+**************
+
+Insert Film:
+
+OK -->http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/insert_film_query?title=titulo1&director=director1&description=descripcion1&year=1950
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/insert_film_query?title=titulo1
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/insert_film_query?title=titulo2&director=director2&description=descripcion1&year=2000
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/insert_film_query?title=titulo2
+
+Find All films:
+
+http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/find_all_films
+
+
+Find by title film:
+
+http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/find/titulo1
+
+
+Update film: 	before update--> {"title":"titulo1","director":"director","year":1950}
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/update_film_query?title=titulo1&director=nuevoDIrector&descripcion=descripcionNueva&year=3000
+
+after update--> {"title":"titulo1","director":"nuevoDIrector","year":3000}
+
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/update_film_query?title=titulo111
+
+
+Delete Film:
+
+OK --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/remove_film?title=titulo1
+
+go to this url and see the changes--> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/find_all_films
+
+	- before -->[{"title":"titulo1","director":"director","year":1950},{"title":"titulo2","director":"director2","description":"descripcion1","year":2000}]
+	- after --> [{"title":"titulo2","director":"director2","description":"descripcion1","year":2000}]
+
+Fail --> http://localhost:8080/ActorFilmServelt/actor-film-service/film-service/remove_film?title=titulo111
+
+

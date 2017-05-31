@@ -1,0 +1,36 @@
+las vistas van en web-inf
+
+en el servlet
+
+private frienddaointerface frienddao;
+
+doaction
+
+string action; getparameter
+
+if action es null
+
+swithc case de action
+case listfriends: funcion listar
+
+
+list friend entitilist = list friend  frienddao.findall()
+
+public void init() throw servetlet{
+
+this.friendao = new friendarrayDao();}
+
+request.setAtribute("friends", entitylist);
+RequestDispatcher rd = getServletCOntext().getRequestDIspatcher("/WEB-INF...nombreficherode la funcion"); (vista)
+rd.forward(request, response);
+
+
+
+en vista importar list, model,
+
+lista de friend nombre =(List<friend>) request.getAttribute("friends);
+
+for friend f: nombre)
+
+f.tostring()
+
